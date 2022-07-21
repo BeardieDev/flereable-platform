@@ -2,8 +2,8 @@
 
 part of 'discovered_device.dart';
 
-// ***********************************************************************
-// // FunctionalDataGenerator***
+// **************************************************************************
+// FunctionalDataGenerator
 // **************************************************************************
 
 abstract class $ScanResult {
@@ -73,15 +73,14 @@ abstract class $DiscoveredDevice {
   Uint8List get rawScanRecordData;
   int get rssi;
 
-  DiscoveredDevice copyWith({
-    String? id,
-    String? name,
-    Map<Uuid, Uint8List>? serviceData,
-    List<Uuid>? serviceUuids,
-    Uint8List? manufacturerData,
-    Uint8List? rawScanRecordData,
-    int? rssi,
-  }) =>
+  DiscoveredDevice copyWith(
+      {String? id,
+        String? name,
+        Map<Uuid, Uint8List>? serviceData,
+        List<Uuid>? serviceUuids,
+        Uint8List? manufacturerData,
+        Uint8List? rawScanRecordData,
+        int? rssi}) =>
       DiscoveredDevice(
         id: id ?? this.id,
         name: name ?? this.name,
@@ -100,7 +99,6 @@ abstract class $DiscoveredDevice {
       this.serviceData,
       this.serviceUuids,
       this.manufacturerData,
-      this.rawScanRecordData
       this.rssi,
     );
     mutator(change);
@@ -110,7 +108,6 @@ abstract class $DiscoveredDevice {
       serviceData: change.serviceData,
       serviceUuids: change.serviceUuids,
       manufacturerData: change.manufacturerData,
-      rawScanRecordData: change.rawScanRecordData,
       rssi: change.rssi,
     );
   }
@@ -128,8 +125,10 @@ abstract class $DiscoveredDevice {
       name == other.name &&
       const DeepCollectionEquality().equals(serviceData, other.serviceData) &&
       const DeepCollectionEquality().equals(serviceUuids, other.serviceUuids) &&
-      const DeepCollectionEquality().equals(manufacturerData, other.manufacturerData) &&
-      const DeepCollectionEquality().equals(rawScanRecordData, other.rawScanRecordData) &&
+      const DeepCollectionEquality()
+          .equals(manufacturerData, other.manufacturerData) &&
+          const DeepCollectionEquality()
+              .equals(rawScanRecordData, other.rawScanRecordData) &&
       rssi == other.rssi;
 
   @override
@@ -140,8 +139,10 @@ abstract class $DiscoveredDevice {
     result = 37 * result + name.hashCode;
     result = 37 * result + const DeepCollectionEquality().hash(serviceData);
     result = 37 * result + const DeepCollectionEquality().hash(serviceUuids);
-    result = 37 * result + const DeepCollectionEquality().hash(manufacturerData);
-    result = 37 * result + const DeepCollectionEquality().hash(rawScanRecordData);
+    result =
+        37 * result + const DeepCollectionEquality().hash(manufacturerData);
+    result =
+        37 * result + const DeepCollectionEquality().hash(rawScanRecordData);
     result = 37 * result + rssi.hashCode;
     return result;
   }
@@ -154,7 +155,7 @@ class DiscoveredDevice$Change {
     this.serviceData,
     this.serviceUuids,
     this.manufacturerData,
-    this.rawScanRecordData,
+    //this.rawScanRecordData,
     this.rssi,
   );
 
@@ -163,7 +164,7 @@ class DiscoveredDevice$Change {
   Map<Uuid, Uint8List> serviceData;
   List<Uuid> serviceUuids;
   Uint8List manufacturerData;
-  Unit8List rawScanRecordData;
+  //Uint8List rawScanRecordData;
   int rssi;
 }
 
@@ -196,9 +197,11 @@ class DiscoveredDevice$ {
     (manufacturerDataContainer, manufacturerData) =>
         manufacturerDataContainer.copyWith(manufacturerData: manufacturerData),
   );
+  /// find container
   static final rawScanRecordData = Lens<DiscoveredDevice, Uint8List>(
-    (s_) => s_.rawScanRecordData,
-    (s_, rawScanRecordData) => s_.copyWith(rawScanRecordData: rawScanRecordData),
+        (rawScanRecordDataContainer) => rawScanRecordDataContainer.rawScanRecordData,
+        (rawScanRecordDataContainer, rawScanRecordData) =>
+        rawScanRecordDataContainer.copyWith(rawScanRecordData: rawScanRecordData),
   );
 
   static final rssi = Lens<DiscoveredDevice, int>(
