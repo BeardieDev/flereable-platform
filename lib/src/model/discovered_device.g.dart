@@ -99,6 +99,7 @@ abstract class $DiscoveredDevice {
       this.serviceData,
       this.serviceUuids,
       this.manufacturerData,
+      this.rawScanRecordData,
       this.rssi,
     );
     mutator(change);
@@ -108,6 +109,7 @@ abstract class $DiscoveredDevice {
       serviceData: change.serviceData,
       serviceUuids: change.serviceUuids,
       manufacturerData: change.manufacturerData,
+      rawScanRecordData: change.rawScanRecordData,
       rssi: change.rssi,
     );
   }
@@ -155,7 +157,7 @@ class DiscoveredDevice$Change {
     this.serviceData,
     this.serviceUuids,
     this.manufacturerData,
-    //this.rawScanRecordData,
+    this.rawScanRecordData,
     this.rssi,
   );
 
@@ -164,7 +166,7 @@ class DiscoveredDevice$Change {
   Map<Uuid, Uint8List> serviceData;
   List<Uuid> serviceUuids;
   Uint8List manufacturerData;
-  //Uint8List rawScanRecordData;
+  Uint8List rawScanRecordData;
   int rssi;
 }
 
